@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en" class="html">
+<head>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script><!-- Global site tag (gtag.js) - Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147476632-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-147476632-1');
+  </script><!-- Hotjar Tracking Code for https://www.matlogica.com -->
+
+  <script>
+    (function(h, o, t, j, a, r) {
+        h.hj = h.hj || function() {
+            (h.hj.q = h.hj.q || []).push(arguments)
+        };
+        h._hjSettings = {
+            hjid: 1660732,
+            hjsv: 6
+        };
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script');
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+  </script>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>MatLogica | The fastest path to scalable analytics and automatic sensitivities</title>
+  <meta content="A JIT compiler for C++/Python for Algorithmic Differentiation and top performance" name="description">
+  <meta content="" name="keywords"><!-- Favicons -->
+  <link href="assets/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"><!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Yantramanav:wght@100;300;400&amp;display=swap" rel="stylesheet"><!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/css/slick.css" rel="stylesheet">
+  <link href="assets/vendor/css/slick-theme.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <script type="module" crossorigin="" src="./src/main.js"></script>
+</head>
+<body class="home">
+  <!-- ======= Header ======= -->
+  <header id="header" class="not-fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a href="index.php"><img src="assets/ML-logoLong.png" alt="ML-logoLong"></a></h1>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li class="active"><em>Home</em></li>
+          <li class="dropdown">
+            <a href="#">What we do</a>
+            <ul>
+              <li>
+                <a href="matlogica-solutions.php">Our Solutions</a>
+              </li>
+              <li>
+                <a href="technology-behind-fast-AAD.php">Our Technology</a>
+              </li>
+              <li>
+                <a href="services.php">Our Services</a>
+              </li>
+              <li>
+                <a href="pricing.php">Our Pricing</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">Use Cases</a>
+            <ul>
+              <li>
+                <a href="AAD-for-finance.php">Finance & Insurance</a>
+              </li>
+              <li>
+                <a href="AAD-for-machine-learning.php">Machine Learning</a>
+              </li>
+              <li>
+                <a href="cloud-native-AAD.php">Cloud Execution</a>
+              </li>
+              <li>
+                <a href="AAD-for-industrial-mathematics.php">Industrial Mathematics</a>
+              </li>
+              <li>
+                <a href="practical-AAD-minimizer-demo.php">AAD Minimisers</a>
+              </li>
+              <li>
+                <a href="practical-AAD-QuantLib-XVA-demo.php">QuantLib XVA speed-up</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">Publications</a>
+            <ul>
+              <li>
+                <a href="publications.php">Research</a>
+              </li>
+              <li>
+                <a href="events.php">Events</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">About Us</a>
+            <ul>
+              <li>
+                <a href="careers.php">Careers</a>
+              </li>
+              <li>
+                <a href="contact.php">Contact</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="FAQ.php">FAQ</a>
+          </li>
+          <li><button class="btn" data-bs-toggle="modal" data-bs-target="#tryNowModal">CODE EXAMPLES</button></li>
+        </ul>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="bg"></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-7 col-lg-6 offset-lg-1">
+          <h1>Math-heavy programming as supposed to be</h1>
+          <p>MatLogica gives quantitative and scientific developers the most flexible and easy-to-use tools to quickly build computational analytics that scales with modern hardware. With our technology, you can seamlessly calculate automatic analytical sensitivities (AAD).</p>
+          <p><a href="https://calendly.com/matlogica" target="_blank" class="btn-secondary scrollto">Request a demo</a><br class="none">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#caseStudyModal" class="btn">Read CASE STUDY</a></p>
+        </div>
+        <div class="col-md-5 col-lg-5 hero-img">
+          <div id="app"></div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End hero -->
+  <main id="main">
+    <div class="container">
+      <section>
+        <div class="row">
+          <div class="col-lg-5 offset-lg-2" id="learnmore">
+            <div class="subhdr">
+              <!--p class="sub">The know-how</p-->
+              <h2>Supercharge analytics</h2>
+            </div>
+          </div>
+          <div class="col-lg-6 offset-lg-2">
+            <div class="video-container intro-video">
+              <iframe height="315" width="420" src="https://www.youtube.com/embed/AOkihWxZXqw?autoplay=0&amp;controls=0"></iframe>
+            </div>
+          </div><!-- <div class="w-100">
+      
+    </div> -->
+          <div class="col-lg-4 intro">
+            <p>You can code in traditional object-oriented languages such as <b>C++</b> or <b>Python</b> while our product takes care of performance.</p>
+            <p>Your code will be easy to maintain. It will perform <b>6-100x faster</b> on modern CPUs. Our AADC library will also compute sensitivities automatically when required.</p>
+          </div>
+        </div>
+      </section>
+      <section class="bg-skewed-hldr xtra-mt">
+        <div class="bg-skewed"></div>
+        <div class="row">
+          <div class="col-lg-5 offset-lg-2">
+            <div class="subhdr">
+              <h2>Product highlights</h2>
+            </div>
+          </div>
+          <div class="col-lg-9 offset-lg-2">
+            <p>We developed a just-in-time (JIT) compiler tailored for complex repetitive calculations and Automatic Adjoint Differentiation. It utilises native CPU vectorisation (AVX2/512) and is fully multi-thread safe, by design.</p>
+            <p>Many competing products claim huge increases in performance due to just introducing the AAD method. These claims often compare the performance to the bump-and-revalue approach which makes them overoptimistic.</p>
+            <p>At MatLogica we never do this. We compare "apples to apples" and our AAD performance gains are expressed relative to the traditional AAD libraries.</p>
+            <p>Our innovative compiler speeds up the AAD method itself and enables a pricing and scenario analysis unattainable with competing products.</p>
+          </div>
+        </div>
+        <div class="row justify-content-evenly mt-md-5">
+          <div class="col-md-6 col-lg-3 offset-lg-1">
+            <div class="card card-style-2">
+              <h4 class="title">Speed up and compute derivatives</h4>
+              <p class="description">Speed up your analytics by 6-100x and compute sensitivities using AAD, faster than the competitors.</p>
+              <p><a href="matlogica-solutions.php" class="lnk">See our Solutions</a></p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card card-style-2">
+              <h4 class="title">Straightforward integration</h4>
+              <p class="description">MatLogica can be integrated in a few weeks, while others take months or years. The code changes are minimal.</p>
+              <p><a href="technology-behind-fast-AAD.php#integration" class="lnk">See Our Services</a></p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="card card-style-2">
+              <h4 class="title">Proven performance</h4>
+              <p class="description">We have impressive benchmarks. Together with Intel, we demonstrate a 1770x speedup for XVA. And there’s more!</p>
+              <p><a href="publications.php" class="lnk">See Our Research</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <div class="banner banner-lined">
+              <div class="row align-middle">
+                <div class="col-md-9">
+                  <h3>Are you a developer?</h3>
+                  <p>Contact us and get a free demo license to play with.</p>
+                </div>
+                <div class="col-md-3 align-self-center text-md-end text-sm-start">
+                  <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#bookDemoModal">Demo License</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="row">
+          <div class="col-lg-5 offset-lg-7 col-md-7 offset-md-5">
+            <div class="subhdr">
+              <p class="sub">How it works</p>
+              <h2>Breakthrough technology</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-between align-items-center">
+          <div class="col-lg-4 col-md-5 offset-lg-2"><img src="assets/images/img-3-light.png" class="img-responsive img-s-center" alt="img-3-light"></div>
+          <div class="col-lg-5 col-md-7">
+            <p>Our JIT compiler sifts through the code in runtime to extract all operations relevant to a specific task. It then optimizes the calculations and generates binary kernels to be executed on the CPU directly. The first kernel takes care of the forward calculations, the second (optional) performs the adjoint calculations for the sensitivities.</p>
+            <p>Instead of calling the original function, we perform repetitive calculations using the fully vectorized, multi-thread safe, and NUMA aware kernel that delivers the groundbreaking speed-up!</p>
+            <p><a href="technology-behind-fast-AAD.php" class="lnk">Learn more</a></p>
+          </div>
+        </div>
+      </section>
+      <div class="section-carousel">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-carousel">
+              <div class="carousel">
+                <div>
+                  <div class="row align-items-center">
+                    <div class="col-md-4 left"><img src="assets/images/WBS.png" alt="WBS" class="rounded"></div>
+                    <div class="col-md-7 offset-md-1 right">
+                      <h3>AAD Integration Strategies</h3>
+                      <p>Watch this presentation from a Quantitative Finance Conference, where Dmitri Goloubentsev presents AAD integration strategies. You will also see a real-life example of integrating AADC into an open-source library - Quantlib.</p>
+                      <p><a href="https://www.youtube.com/watch?v=BGBVXmpNi0U&amp;feature=youtu.be" alt="" class="lnk">Watch now</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="row align-items-center">
+                    <div class="col-md-7 left">
+                      <h3>Joint Benchmark with Intel</h3>
+                      <p>Intel-led white paper demonstrating an up to 1770x performance increase for XVA pricing (830 for XVA risks!) on Intel processors when using Matlogica's AADC. It is opensource and available at <a href="https://github.com/matlogica/XVA-Benchmark">GitHub</a>.</p>
+                      <p><a class="lnk" href="https://www.intel.com/content/dam/www/public/us/en/documents/white-papers/xva-pricing-application-financial-services-white-papers.pdf">Read more</a></p>
+                    </div>
+                    <div class="col-md-4 offset-md-1 right"><img src="assets/images/intel.png" alt="intel"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="row align-items-center">
+                    <div class="col-md-7 left">
+                      <h3>A New Approach to Parallel Computing Using Automatic Differentiation</h3>
+                      <p>A paper in Parallel Universe Magazine №40 featuring a new approach that turns object-oriented, single-thread, scalar code into AVX2/AVX512 vectorized multi-thread and thread-safe lambda functions with no runtime penalty.</p>
+                      <p><a href="assets/publications/A-New-Approach-to-Parallel-Computing.pdf" target="_blank" class="lnk">Read more</a></p>
+                    </div>
+                    <div class="col-md-4 offset-md-1 right"><img src="assets/images/img-sample1.png" alt="img-sample1" class="rounded"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <h3>Would you like to know more?</h3>
+          <p>MatLogica’s applications are far beyond traditional AAD.</p>
+          <p>Our product can be used to effectively develop Machine Learning in C++.</p>
+          <p>We also know how to do algorithmic differentiation for the Longstaff-Schwartz regression.</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="downloadModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="max-width=800px">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="container">
+            <div class="col-md-10 offset-lg-2">
+              <h2>AADC by MatLogica</h2>
+            </div>
+            <div class="col-md-11 offset-lg-1">
+              <div class="copy">
+                <p>In this document you will find out what MatLogica AADC is, how our algorithmic differentiation solution is different and how it works. You will also learn about use cases that go beyond traditional AAD and can be used to speed up what-if analysis, historical VaR and for machine learning.</p>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-12 col-inner"><img src="assets/images/competition.png" class="img-responsive img-s-center" alt="competition"></div>
+            </div>
+            <div class="col-md-10 offset-lg-2">
+              <p>Drop us a note at info@matlogica.com if you have any problems.</p><br>
+              <div class="col-md-8 offset-lg-4">
+                <a href="assets/publications/MatLogica-Product-Introduction-EN.pdf" class="btn" target="new">Download now!</a><br>
+              </div><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9 offset-lg-2">
+        <div class="banner banner-bttm banner-skew">
+          <div class="bg"></div>
+          <div class="content">
+            <div class="row align-middle">
+              <div class="col-md-8">
+                <h3>Interested in these opportunities?</h3>
+                <p>Contact us and we will arrange a free demo for you and your team.</p>
+              </div>
+              <div class="col-md-4 align-self-center text-md-end text-sm-start">
+                <a href="https://calendly.com/matlogica" target="_blank" class="btn scrollto">Book a demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main><!-- End #main -->
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="bg"></div>
+    <div class="footer-top">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-12">
+            <div class="row">
+              <div class="col-lg-2 offset-lg-1 col-md-3 footer-links">
+                <ul class="mt-5">
+                  <li>
+                    <a href="index.php">Home</a>
+                  </li><!-- <li><a href="about.php">About</a></li> -->
+                  <li>
+                    <a href="matlogica-solutions.php">Our Solutions</a>
+                  </li>
+                  <li>
+                    <a href="services.php">Our Services</a>
+                  </li>
+                  <li>
+                    <a href="technology-behind-fast-AAD.php">Our Technology</a>
+                  </li>
+                  <li>
+                    <a href="pricing.php">Our Pricing</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-2 col-md-3 footer-links">
+                <ul class="mt-5">
+                  <li>
+                    <a href="publications.php">Publications</a>
+                  </li>
+                  <li>
+                    <a href="events.php">Events</a>
+                  </li>
+                  <li>
+                    <a href="careers.php">Careers</a>
+                  </li>
+                  <li>
+                    <a href="contact.php">Contact</a>
+                  </li>
+                  <li>
+                    <a href="FAQ.php">FAQ</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-2 col-md-3 footer-links">
+                <h3>Use Cases</h3>
+                <ul class="mt-3">
+                  <li>
+                    <a href="AAD-for-finance.php">Finance & Insurance</a>
+                  </li>
+                  <li>
+                    <a href="AAD-for-machine-learning.php">Machine Learning</a>
+                  </li>
+                  <li>
+                    <a href="cloud-native-AAD.php">Cloud Execution</a>
+                  </li>
+                  <li>
+                    <a href="AAD-for-industrial-mathematics.php">Industrial Mathematics</a>
+                  </li>
+                  <li>
+                    <a href="practical-AAD-minimizer-demo.php">AAD Minimisers</a>
+                  </li>
+                  <li>
+                    <a href="practical-AAD-QuantLib-XVA-demo.php">Quantlib XVA Speed up</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-2 col-md-3 footer-info">
+                <h3>About MatLogica</h3>
+                <p class="mb-2">Company number 12390744</p>
+                <p>411 Oxford Street<br>
+                Office 1.01<br>
+                London W1C 2PE<br>
+                United Kingdom</p>
+              </div>
+              <div class="col-lg-2 col-md-3 footer-contact">
+                <h3>Contact Us</h3>
+                <p class="contact-details">+44 (0) 2045773301<br>
+                <a href="mailto:info@matlogica.com">info@matlogica.com</a><br></p>
+                <div class="social-links mt-3">
+                  <a href="https://www.linkedin.com/company/matlogica" class="linkedin"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+  <!-- MODAL -->
+  <div class="modal fade" id="bookDemoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-10 col-inner">
+              <h2>Get a demo version</h2>
+              <div class="copy">
+                <p>If you want to get a demo version of our product please leave the details below and we will come back to you in 2 business days</p>
+              </div>
+              <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/v2.js"></script> 
+              <script>
+
+
+                            hbspt.forms.create({
+                                region: "eu1",
+                                portalId: "25388392",
+                                formId: "597cbcfa-4f9b-4256-9e8e-f670b3ce9bac"
+                            });
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="communityModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-10 col-inner">
+              <h2>AADC Community Edition</h2>
+              <div class="copy">
+                <p>Please leave the details below to receive Community Edition of MatLogica AADC.</p>
+                <p><font size="-2">By downloading and using this version you acknowledge that Community Edition has limited feature set.</font></p>
+                <p><font size="-2">Note that this license is for non-commercial use only.</font></p>
+              </div>
+              <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/v2.js"></script> 
+              <script>
+
+
+                            hbspt.forms.create({
+                                region: "eu1",
+                                portalId: "25388392",
+                                formId: "597cbcfa-4f9b-4256-9e8e-f670b3ce9bac"
+                            });
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="caseStudyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-10 col-inner">
+              <h2>Case study download</h2>
+              <div class="col-md-12 my-auto">
+                Learn how MatLogica AADC helped a Tier 2 bank to speed up their risk calculations by 10-20x, slash their grid costs, increase quants' productivity and generate new revenue streams!
+              </div><br>
+              <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/v2.js"></script> 
+              <script>
+
+
+                            hbspt.forms.create({
+                                region: "eu1",
+                                portalId: "25388392",
+                                formId: "92cdafba-bb8a-4a81-9870-01b4d727ba65"
+                            });
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  $(document).ready(function() {
+
+  if(window.location.href.indexOf('#caseStudyModal') != -1) {
+  $('#caseStudyModal').modal('show');
+  }
+
+  });
+  </script>
+  <div class="modal fade" id="bookDemoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-10 col-inner">
+              <form method="post" class="form" id="demoRequestForm" name="demoRequestForm">
+                <h2>Full version</h2>
+                <div class="copy">
+                  <p>If you want to get a full version of our product please leave the details below and we will come back to you in 2 business days</p>
+                </div>
+                <script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/v2.js"></script> 
+                <script>
+
+
+                            hbspt.forms.create({
+                                region: "eu1",
+                                portalId: "25388392",
+                                formId: "a379a9ab-2f8e-42d5-999d-df69f43d6ea9"
+                            });
+                </script>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+
+        'use strict';
+
+        // Form
+
+        var demoRequestForm = function () {
+
+            if ($('#demoRequestForm').length > 0) {
+                $("#demoRequestForm").validate({
+                    rules: {
+                        name: "required",
+                        //org: "required",
+                        //job: "required",
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                        message: {
+                            required: true,
+                            minlength: 5
+                        },
+                        interest: {
+                            required: true,
+                            minlength: 1
+                        }
+                    },
+                    messages: {
+                        name: "Please enter your name",
+                       // org: "Please enter your organisation name",
+                       // job: "Please enter your job title",
+                        email: "Please enter a valid email address",
+                        message: "Please enter a message",
+                        interest: "Please select at least one"
+                    },
+
+                    errorPlacement: function (error, element) {
+                        if (element.is(":checkbox")) {
+                            $('#demoRequestForm .cboxes').after(error);
+                        } else {
+                            error.insertAfter(element);
+                        }
+                    },
+                    /* submit via ajax */
+                    submitHandler: function (form) {
+                        var $submit = $('.submitting'),
+                            waitText = 'Submitting...';
+
+                        $.ajax({
+                            type: "POST",
+                            url: "scripts/send-email.php",
+                            data: $(form).serialize(),
+
+                            beforeSend: function () {
+                                $submit.css('display', 'block').text(waitText);
+                            },
+                            success: function (msg) {
+                                if (msg == 'OK') {
+                                    $('#form-message-warning').hide();
+                                    setTimeout(function () {
+                                        $('#demoRequestForm').fadeOut(
+                                            function () {
+                                                $('#demoRequestForm')
+                                                    .trigger('reset');
+                                            });
+                                    }, 1000);
+                                    setTimeout(function () {
+                                        $('#form-message-success').fadeIn();
+                                    }, 1400);
+
+                                } else {
+                                    $('#form-message-warning').html(msg);
+                                    $('#form-message-warning').fadeIn();
+                                    $submit.css('display', 'none');
+                                }
+                            },
+                            error: function () {
+                                $('#form-message-warning').html(
+                                    "Something went wrong. Please try again or contact info@matlogica.com");
+                                $('#form-message-warning').fadeIn();
+                                $submit.css('display', 'none');
+                            }
+                        });
+                    }
+
+                });
+            }
+        };
+        demoRequestForm();
+
+        $('[data-bs-target="#bookDemoModal"]').on('click', function () {
+            $('#form-message-warning, #form-message-success, .submitting').hide();
+            $('#demoRequestForm').show();
+        })
+
+    });
+  </script>
+  <div class="modal fade" id="communityModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-10 col-inner">
+              <h2>AADC Community Edition</h2>
+              <div class="copy">
+                <p>Please leave the details below to receive Community Edition of MatLogica AADC.</p>
+                <p><font size="-2">By downloading and using this version you acknowledge that Community Edition has limited feature set.</font></p>
+                <p><font size="-2">Note that this license is for non-commercial use only.</font></p>
+              </div>
+              <form method="post" class="form" id="demoRequestForm" name="demoRequestForm">
+                <input type="hidden" id="subject" name="subject" value="demo">
+                <p><input type="text" class="form-control" name="name" id="name" placeholder="Full name*"></p><!--p><input type="text" class="form-control" name="org" id="org" placeholder="Organisation*">
+                            </p>
+                            <p><input type="text" class="form-control" name="job" id="job" placeholder="Job title*"></p-->
+                <p><input type="text" class="form-control" name="email" id="email" placeholder="Email*"></p>
+                <p class="subt">What are you interested in?*</p>
+                <div class="cboxes">
+                  <span class="form-check"><input class="form-check-input" type="checkbox" name="interest" value="Speed up" id="speedUp"> <label class="form-check-label" for="speedUp">Speed up</label></span> <span class="form-check last"><input class="form-check-input" type="checkbox" name="interest" value="ADD" id="ADD"> <label class="form-check-label" for="ADD">AAD</label></span>
+                </div>
+                <p>
+                <textarea class="form-control" name="message" id="message" cols="30" rows="7" placeholder="Your message*"></textarea></p>
+                <p><input type="submit" value="Submit" class="btn"></p>
+              </form>
+              <div id="form-message-warning" class="form-message-warning"></div>
+              <div id="form-message-success" class="form-message-success">
+                <h2>Your message was sent, thank you!</h2>
+                <p>We will contact you within 2 business days.</p>
+              </div>
+              <script>
+              $(function () {
+
+              'use strict';
+
+              // Form
+
+              var demoRequestForm = function () {
+
+              if ($('#demoRequestForm').length > 0) {
+                $("#demoRequestForm").validate({
+                    rules: {
+                        name: "required",
+                        //org: "required",
+                        //job: "required",
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                        message: {
+                            required: true,
+                            minlength: 5
+                        },
+                        interest: {
+                            required: true,
+                            minlength: 1
+                        }
+                    },
+                    messages: {
+                        name: "Please enter your name",
+                       // org: "Please enter your organisation name",
+                       // job: "Please enter your job title",
+                        email: "Please enter a valid email address",
+                        message: "Please enter a message",
+                        interest: "Please select at least one"
+                    },
+
+                    errorPlacement: function (error, element) {
+                        if (element.is(":checkbox")) {
+                            $('#demoRequestForm .cboxes').after(error);
+                        } else {
+                            error.insertAfter(element);
+                        }
+                    },
+                    /* submit via ajax */
+                    submitHandler: function (form) {
+                        var $submit = $('.submitting'),
+                            waitText = 'Submitting...';
+
+                        $.ajax({
+                            type: "POST",
+                            url: "scripts/send-email.php",
+                            data: $(form).serialize(),
+
+                            beforeSend: function () {
+                                $submit.css('display', 'block').text(waitText);
+                            },
+                            success: function (msg) {
+                                if (msg == 'OK') {
+                                    $('#form-message-warning').hide();
+                                    setTimeout(function () {
+                                        $('#demoRequestForm').fadeOut(
+                                            function () {
+                                                $('#demoRequestForm')
+                                                    .trigger('reset');
+                                            });
+                                    }, 1000);
+                                    setTimeout(function () {
+                                        $('#form-message-success').fadeIn();
+                                    }, 1400);
+
+                                } else {
+                                    $('#form-message-warning').html(msg);
+                                    $('#form-message-warning').fadeIn();
+                                    $submit.css('display', 'none');
+                                }
+                            },
+                            error: function () {
+                                $('#form-message-warning').html(
+                                    "Something went wrong. Please try again or contact info@matlogica.com");
+                                $('#form-message-warning').fadeIn();
+                                $submit.css('display', 'none');
+                            }
+                        });
+                    }
+
+                });
+              }
+              };
+              demoRequestForm();
+
+              $('[data-bs-target="#bookDemoModal"]').on('click', function () {
+              $('#form-message-warning, #form-message-success, .submitting').hide();
+              $('#demoRequestForm').show();
+              })
+
+              });
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="tryNowModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-10 col-inner">
+              <h2>Try it now!</h2>
+              <div class="copy">
+                <p>You can try AADC technology right from your browser. No need to download or install anything!</p>
+              </div>
+              <div class="copy">
+                <p>You have 2 options:</p>
+                <p>Option 1: An environment with examples, from basic to more complex</p>
+                <p>Option 2: QuantLib example with AAD Minimisers <a href="practical-AAD-minimizer-demo.php">detailed here</a></p>
+              </div><a href="https://dev.matlogica.com/live-env/get-env.php" class="btn">Option 1: Basic Examples</a><br>
+              <p><a href="https://dev.matlogica.com/live-env/get-env.php?image=aadc-ql" class="btn">Option 2: QuantLib Example</a><br></p>
+              <p>Drop us a note at info@matlogica.com if you have any questions.</p><br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+
+        'use strict';
+
+        // Form
+
+        var tryNowRequestForm = function () {
+
+            if ($('#tryNowRequestForm').length > 0) {
+                $("#tryNowRequestForm").validate({
+                    rules: {
+                        name: "required",
+                        org: "required",
+                        email: {
+                            required: true,
+                            email: true
+                        },
+                        message: {
+                            required: true,
+                            minlength: 5
+                        }
+                    },
+                    messages: {
+                        name: "Please enter your name",
+                        org: "Please enter your organisation name",
+                        email: "Please enter a valid email address",
+                        message: "Please enter a message"
+                    },
+
+                    errorPlacement: function (error, element) {
+                        if (element.is(":checkbox")) {
+                            $('#tryNowRequestForm .cboxes').after(error);
+                        } else {
+                            error.insertAfter(element);
+                        }
+                    },
+                    /* submit via ajax */
+                    submitHandler: function (form) {
+                        var $submit = $('.submitting'),
+                            waitText = 'Submitting...';
+
+                        $.ajax({
+                            type: "POST",
+                            url: "scripts/send-email.php",
+                            data: $(form).serialize(),
+
+                            beforeSend: function () {
+                                $submit.css('display', 'block').text(waitText);
+                            },
+                            success: function (msg) {
+                                console.log(msg);
+                                if (msg == 'OK') {
+                                    $('#trynow-form-message-warning').hide();
+                                    setTimeout(function () {
+                                        $('#tryNowRequestForm').fadeOut(
+                                            function () {
+                                                $('#tryNowRequestForm')
+                                                    .trigger('reset');
+                                            });
+                                    }, 1000);
+                                    setTimeout(function () {
+                                        $('#trynow-form-message-success').fadeIn();
+                                    }, 1400);
+                                } else if (msg.substring(0, 4) == 'url:') {
+                                    $('#trynow-form-message-warning').hide();
+                                    setTimeout(function () {
+                                        $('#tryNowRequestForm').fadeOut(
+                                            function () {
+                                                $('#tryNowRequestForm')
+                                                    .trigger('reset');
+                                            });
+                                    }, 1000);
+                                    var link = msg.substring(4);
+                                    var ha = document.createElement('a');
+                                    // Create the text node for anchor element.
+                                    var hlink = document.createTextNode(link);
+                                    
+                                    // Append the text node to anchor element.
+                                    ha.appendChild(hlink); 
+                                        
+                                    // Set the title.
+                                    ha.title = "This is Link"; 
+                                        
+                                    // Set the href property.
+                                    ha.href = link; 
+
+                                    $('#trynow-form-message-success2-url').html("");
+                                    $('#trynow-form-message-success2-url').append(ha);
+                                    setTimeout(function () {
+                                        $('#trynow-form-message-success2').fadeIn();
+                                    }, 1400);
+                                } else {
+                                    $('#trynow-form-message-warning').html(msg);
+                                    $('#trynow-form-message-warning').fadeIn();
+                                    $submit.css('display', 'none');
+                                }
+                            },
+                            error: function () {
+                                $('#trynow-form-message-warning').html(
+                                    "Something went wrong. Please try again or contact info@matlogica.com");
+                                $('#trynow-form-message-warning').fadeIn();
+                                $submit.css('display', 'none');
+                            }
+                        });
+                    }
+
+                });
+            }
+        };
+        tryNowRequestForm();
+
+        var tryNowRequestFormClick = function () {
+            $('#trynow-form-message-warning, #trynow-form-message-success, .submitting, #trynow-form-message-success2').hide();
+            $('#tryNowRequestForm').show();
+            $.ajax({type: "POST", url: "scripts/send-email.php", data: "subject=tryitnow_open"});
+        };
+        $('[data-bs-target="#tryNowModal"]').on('click', tryNowRequestFormClick);
+  //        console.log("test");
+        // tryNowRequestFormClick();
+  //        setTimeout(tryNowRequestFormClick, 10000);
+
+    });
+  </script>
+  <div id="preloader"></div><a href="#" class="back-to-top d-flex align-items-center justify-content-center"></a> 
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script> 
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> 
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> 
+  <script src="assets/vendor/jquery/jquery.validate.min.js"></script> 
+  <script src="assets/vendor/slick/slick.min.js"></script> 
+  <script src="assets/js/main.js"></script> 
+  <script type="text/javascript">
+
+
+  _linkedin_partner_id = "3606186";
+  window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+  window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script> 
+  <script type="text/javascript">
+
+
+  (function(l) {
+  if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+  window.lintrk.q=[]}
+  var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})(window.lintrk);
+  </script> <noscript><img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=3606186&amp;fmt=gif"></noscript>
+</body>
+</html>

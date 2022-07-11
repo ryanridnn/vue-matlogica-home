@@ -1,0 +1,25 @@
+{
+  "name": "liverisk",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@heroicons/vue": "^1.0.6",
+    "chart.js": "^3.8.0",
+    "pinia": "^2.0.14",
+    "sass": "^1.53.0",
+    "vite-svg-loader": "^3.4.0",
+    "vue": "^3.2.25",
+    "vue-chartjs": "^4.1.1",
+    "vue-json-viewer": "^3.0.4",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "vite": "^2.9.9"
+  }
+}
