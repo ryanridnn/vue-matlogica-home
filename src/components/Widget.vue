@@ -8,65 +8,6 @@ import BarChart from "../components/BarChart.vue";
 
 const connection = useConnectionStore();
 
-const priceAndRisk = computed(() => connection.dagNodes[1]);
-const portfolio = computed(() => connection.dagNodes[0]);
-
-const marketRates = computed(() => {
-	if (
-		priceAndRisk.value &&
-		portfolio.value &&
-		priceAndRisk.value.output_params.MarketRates &&
-		portfolio.value.output_params.OriginalMarketRates
-	) {
-		let currentMarketRates = {};
-		let originalMarketRates = {};
-
-		priceAndRisk.value.output_params.MarketRates.map((arr) => {
-			currentMarketRates[arr[0]] = arr[1];
-		});
-
-		portfolio.value.output_params.OriginalMarketRates.map((arr) => {
-			originalMarketRates[arr[0]] = arr[1];
-		});
-
-		return [currentMarketRates, originalMarketRates];
-	} else {
-		return [];
-	}
-});
-
-const fittedValues = computed(() => {
-	if (
-		priceAndRisk.value &&
-		priceAndRisk.value.output_params.fitted_values_forecast &&
-		priceAndRisk.value.output_params.fitted_values_discount
-	) {
-		return [
-			priceAndRisk.value.output_params.fitted_values_forecast,
-			priceAndRisk.value.output_params.fitted_values_discount,
-		];
-	} else {
-		return [];
-	}
-});
-
-const risk = computed(() => {
-	let risk = {};
-
-	if (priceAndRisk.value && priceAndRisk.value.output_params.Risk) {
-		priceAndRisk.value.output_params.Risk.map((arr) => {
-			risk[arr[0]] = arr[1];
-		});
-		return risk;
-	} else {
-		return risk;
-	}
-
-	return (
-		(priceAndRisk.value ? priceAndRisk.value.output_params.Risk : []) || []
-	);
-});
-
 const NumTrades = computed(() => {
 	if (connection.dagNodes[0]) {
 		return connection.dagNodes[0].input_params.NumTrades;
@@ -201,25 +142,25 @@ onUnmounted(() => {
 			<div class="widget__readonly readonly">
 				<div class="readonly__label">PortfolioNPV</div>
 				<div class="readonly__value">
-					{{ portfolioNPV.toFixed(2) }}
+					{{ connection.portfolioNPV }}
 				</div>
 			</div>
 			<div class="widget__readonly readonly widget__readonly--small">
 				<div class="readonly__label">IR SWAPS</div>
 				<div class="readonly__value">
-					{{ irSwaps }}
+					{{ connection.irSwaps }}
 				</div>
 			</div>
 			<div class="widget__readonly readonly">
 				<div class="readonly__label">Current valuation time</div>
 				<div class="readonly__value">
-					{{ currentValuationTime.toFixed(2) }}ms
+					{{ connection.currentValuationTime }}ms
 				</div>
 			</div>
 			<div class="widget__readonly readonly">
 				<div class="readonly__label">Portfolio Load Time</div>
 				<div class="readonly__value">
-					{{ portfolioLoadTime.toFixed(2) }}ms
+					{{ connection.portfolioLoadTime }}ms
 				</div>
 			</div>
 		</div>
@@ -227,7 +168,7 @@ onUnmounted(() => {
 			<div class="widget__graph" v-if="showMarketGraph">
 				<LineChart
 					class="widget__chart line--market"
-					:content="marketRates"
+					:content="connection.marketRates"
 					:colors="['rgb(52 211 153)', 'rgb(148 163 184)']"
 					:showTicks="false"
 					:options="{ showLabel: false }"
@@ -236,7 +177,7 @@ onUnmounted(() => {
 			<div class="widget__graph" v-if="showFittedGraph">
 				<LineChart
 					class="widget__chart line--fitted"
-					:content="fittedValues"
+					:content="connection.fittedValues"
 					:showTicks="false"
 					:options="{ showLabel: false }"
 				/>
@@ -244,7 +185,7 @@ onUnmounted(() => {
 			<div class="widget__graph" v-if="showRiskGraph">
 				<BarChart
 					class="widget__chart bar--risk"
-					:content="risk"
+					:content="connection.risk"
 					:showTicks="false"
 				/>
 			</div>

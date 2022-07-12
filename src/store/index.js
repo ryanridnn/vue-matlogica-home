@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { formatToUSD } from "../utils";
 
 export const useConnectionStore = defineStore("connectionStore", {
 	state: () => {
@@ -58,6 +59,123 @@ export const useConnectionStore = defineStore("connectionStore", {
 				return 0;
 			} else {
 				return state.dagNodes.length;
+			}
+		},
+		priceAndRisk: (state) => {
+			return state.dagNodes[1];
+		},
+		portfolio: (state) => {
+			return state.dagNodes[0];
+		},
+		marketRates: (state) => {
+			if (
+				state.priceAndRisk &&
+				state.portfolio &&
+				state.priceAndRisk.output_params.MarketRates &&
+				state.portfolio.output_params.OriginalMarketRates
+			) {
+				let currentMarketRates = {};
+				let originalMarketRates = {};
+
+				state.priceAndRisk.output_params.MarketRates.map((arr) => {
+					currentMarketRates[arr[0]] = arr[1];
+				});
+
+				state.portfolio.output_params.OriginalMarketRates.map((arr) => {
+					originalMarketRates[arr[0]] = arr[1];
+				});
+
+				return [currentMarketRates, originalMarketRates];
+			} else {
+				return [];
+			}
+		},
+		fittedValues: (state) => {
+			if (
+				state.priceAndRisk &&
+				state.priceAndRisk.output_params.fitted_values_forecast &&
+				state.priceAndRisk.output_params.fitted_values_discount
+			) {
+				return [
+					state.priceAndRisk.output_params.fitted_values_forecast,
+					state.priceAndRisk.output_params.fitted_values_discount,
+				];
+			} else {
+				return [];
+			}
+		},
+		risk: (state) => {
+			let risk = {};
+
+			if (state.priceAndRisk && state.priceAndRisk.output_params.Risk) {
+				state.priceAndRisk.output_params.Risk.map((arr) => {
+					risk[arr[0]] = arr[1];
+				});
+				return risk;
+			} else {
+				return risk;
+			}
+
+			return (
+				(state.priceAndRisk
+					? state.priceAndRisk.output_params.Risk
+					: []) || []
+			);
+		},
+		portfolioNPV: (state) => {
+			return (
+				(state.priceAndRisk &&
+				state.priceAndRisk.output_params.PortfolioNPV
+					? formatToUSD(
+							state.priceAndRisk.output_params.PortfolioNPV.toFixed(
+								2
+							)
+					  )
+					: "$0") || "$0"
+			);
+		},
+		currentValuationTime: (state) => {
+			return (
+				(state.priceAndRisk && state.priceAndRisk.output_params.CalcTime
+					? state.priceAndRisk.output_params.CalcTime.toFixed(2)
+					: 0) || 0
+			);
+		},
+		irSwaps: (state) => {
+			return (
+				(state.portfolio
+					? state.portfolio.input_params.NumTrades
+					: 0) || 0
+			);
+		},
+		portfolioLoadTime: (state) => {
+			return (
+				(state.portfolio && state.portfolio.output_params.CalcTime
+					? state.portfolio.output_params.CalcTime.toFixed(2)
+					: 0) || 0
+			);
+		},
+		trades: (state) => {
+			return state.portfolio ? state.portfolio.output_params.Trades : [];
+		},
+		tradesNPV: (state) => {
+			if (
+				state.portfolio &&
+				state.priceAndRisk &&
+				state.portfolio.output_params.Trades &&
+				state.priceAndRisk.output_params.TradeNPV
+			) {
+				let tradesNPV = state.priceAndRisk.output_params.TradeNPV.map(
+					(npv, index) => {
+						return {
+							...state.portfolio.output_params.Trades[index],
+							npv: formatToUSD(npv),
+						};
+					}
+				);
+				return tradesNPV;
+			} else {
+				return [];
 			}
 		},
 	},

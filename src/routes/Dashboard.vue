@@ -10,107 +10,8 @@ import Table from "../components/Table.vue";
 import RangeInput from "../components/RangeInput.vue";
 
 const connection = useConnectionStore();
-// const alert = useAlertStore();
 const isRandomDataOn = ref(connection.randomizeData);
 const randomInputInterval = ref(null);
-
-const priceAndRisk = computed(() => connection.dagNodes[1]);
-const portfolio = computed(() => connection.dagNodes[0]);
-
-const marketRates = computed(() => {
-	if (
-		priceAndRisk.value &&
-		portfolio.value &&
-		priceAndRisk.value.output_params.MarketRates &&
-		portfolio.value.output_params.OriginalMarketRates
-	) {
-		let currentMarketRates = {};
-		let originalMarketRates = {};
-
-		priceAndRisk.value.output_params.MarketRates.map((arr) => {
-			currentMarketRates[arr[0]] = arr[1];
-		});
-
-		portfolio.value.output_params.OriginalMarketRates.map((arr) => {
-			originalMarketRates[arr[0]] = arr[1];
-		});
-
-		return [currentMarketRates, originalMarketRates];
-	} else {
-		return [];
-	}
-});
-
-const fittedValues = computed(() => {
-	if (
-		priceAndRisk.value &&
-		priceAndRisk.value.output_params.fitted_values_forecast &&
-		priceAndRisk.value.output_params.fitted_values_discount
-	) {
-		return [
-			priceAndRisk.value.output_params.fitted_values_forecast,
-			priceAndRisk.value.output_params.fitted_values_discount,
-		];
-	} else {
-		return [];
-	}
-});
-
-const risk = computed(() => {
-	let risk = {};
-
-	if (priceAndRisk.value && priceAndRisk.value.output_params.Risk) {
-		priceAndRisk.value.output_params.Risk.map((arr) => {
-			risk[arr[0]] = arr[1];
-		});
-		return risk;
-	} else {
-		return risk;
-	}
-
-	return (
-		(priceAndRisk.value ? priceAndRisk.value.output_params.Risk : []) || []
-	);
-});
-
-const portfolioNPV = computed(
-	() =>
-		(priceAndRisk.value
-			? priceAndRisk.value.output_params.PortfolioNPV
-			: 0) || 0
-);
-
-const currentValuationTime = computed(
-	() =>
-		(priceAndRisk.value ? priceAndRisk.value.output_params.CalcTime : 0) ||
-		0
-);
-
-const irSwaps = computed(
-	() => (portfolio.value ? portfolio.value.input_params.NumTrades : 0) || 0
-);
-
-const portfolioLoadTime = computed(
-	() => (portfolio.value ? portfolio.value.output_params.CalcTime : 0) || 0
-);
-
-const tradesNPV = computed(() => {
-	if (
-		portfolio.value &&
-		priceAndRisk.value &&
-		portfolio.value.output_params.Trades &&
-		priceAndRisk.value.output_params.TradeNPV
-	) {
-		let tradesNPV = priceAndRisk.value.output_params.TradeNPV.map(
-			(npv, index) => {
-				return { ...portfolio.value.output_params.Trades[index], npv };
-			}
-		);
-		return tradesNPV;
-	} else {
-		return [];
-	}
-});
 
 const validateSubmit = (e, callback) => {
 	if (e.target.value !== "" && !!Number(e.target.value)) {
@@ -246,7 +147,8 @@ watchEffect(() => {
 					:onInput="(e) => handleUpdate(e, 'parallel_shift')"
 					:options="{ min: -3, max: 3, step: 0.005 }"
 					:value="
-						priceAndRisk && priceAndRisk.input_params.parallel_shift
+						connection.priceAndRisk &&
+						connection.priceAndRisk.input_params.parallel_shift
 					"
 				/>
 				<label for="parallelTilt" class="dashboard__label"
@@ -256,7 +158,8 @@ watchEffect(() => {
 					:onInput="(e) => handleUpdate(e, 'parallel_tilt')"
 					:options="{ min: -3, max: 3, step: 0.005 }"
 					:value="
-						priceAndRisk && priceAndRisk.input_params.parallel_tilt
+						connection.priceAndRisk &&
+						connection.priceAndRisk.input_params.parallel_tilt
 					"
 				/>
 				<label for="parallelTwist" class="dashboard__label"
@@ -266,7 +169,8 @@ watchEffect(() => {
 					:onInput="(e) => handleUpdate(e, 'parallel_twist')"
 					:options="{ min: -3, max: 3, step: 0.005 }"
 					:value="
-						priceAndRisk && priceAndRisk.input_params.parallel_twist
+						connection.priceAndRisk &&
+						connection.priceAndRisk.input_params.parallel_twist
 					"
 				/>
 			</div>
@@ -275,7 +179,7 @@ watchEffect(() => {
 			<div class="dashboard__readonly readonly">
 				<div class="readonly__label">PortfolioNPV</div>
 				<div class="readonly__value">
-					{{ portfolioNPV.toFixed(2) }}
+					{{ connection.portfolioNPV }}
 				</div>
 			</div>
 			<div
@@ -283,26 +187,26 @@ watchEffect(() => {
 			>
 				<div class="readonly__label">IR SWAPS</div>
 				<div class="readonly__value">
-					{{ irSwaps }}
+					{{ connection.irSwaps }}
 				</div>
 			</div>
 			<div class="dashboard__readonly readonly">
 				<div class="readonly__label">Current valuation time</div>
-				<div class="readonly__value">
-					{{ currentValuationTime.toFixed(2) }}ms
+				<div class="readonly__value" title="Current valuation time">
+					{{ connection.currentValuationTime }}ms
 				</div>
 			</div>
 			<div class="dashboard__readonly readonly">
 				<div class="readonly__label">Portfolio Load Time</div>
 				<div class="readonly__value">
-					{{ portfolioLoadTime.toFixed(2) }}ms
+					{{ connection.portfolioLoadTime }}ms
 				</div>
 			</div>
 		</div>
 		<LineChart
 			class="line--market-rates"
 			label="Market Rates"
-			:content="marketRates"
+			:content="connection.marketRates"
 			:options="{
 				showLabel: true,
 				labels: ['Current Market Rates', 'Original Market Rates'],
@@ -313,7 +217,7 @@ watchEffect(() => {
 		<LineChart
 			class="line--fitted-values"
 			label="Fitted Values"
-			:content="fittedValues"
+			:content="connection.fittedValues"
 			:options="{
 				showLabel: true,
 				labels: ['Forecast', 'Discount'],
@@ -323,20 +227,20 @@ watchEffect(() => {
 		<BarChart
 			class="bar--risk"
 			label="Risk Graph"
-			:content="risk"
+			:content="connection.risk"
 			:aspectRatio="riskBarRatio"
 		/>
 		<Table
 			class="table--risk"
 			label="Risk Table"
-			:content="risk"
+			:content="connection.risk"
 			:options="{ keyAndValue: true, headings: ['Key', 'Value'] }"
 			:maxHeight="riskTableHeight"
 		/>
 		<Table
 			class="table--trades"
 			label="TradesNPV"
-			:content="tradesNPV"
+			:content="connection.tradesNPV"
 			:maxHeight="tradesTableHeight"
 		/>
 	</div>

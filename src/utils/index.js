@@ -42,3 +42,12 @@ export const useThrottle = () => {
 export const generateRandomNumber = (min = 0, max = 100) => {
 	return Math.random() * (max - min) + min;
 };
+
+const formatter = new Intl.NumberFormat("en-US", {
+	style: "currency",
+	currency: "USD",
+});
+
+export const formatToUSD = (num) => {
+	return formatter.format(num);
+};

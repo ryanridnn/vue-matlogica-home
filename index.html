@@ -52,7 +52,9 @@
   <link href="/assets/vendor/css/slick.css" rel="stylesheet">
   <link href="/assets/vendor/css/slick-theme.css" rel="stylesheet">
   <link href="/assets/css/style.css" rel="stylesheet">
+    <script type="module" src="/assets/js/popper.js"></script>
   <script type="module" crossorigin="" src="./src/main.js"></script>
+
   
 </head>
 <body class="home">
@@ -948,7 +950,12 @@
   window._linkedin_data_partner_ids.push(_linkedin_partner_id);
   </script> 
   <script type="module">
-
+const tooltipTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="tooltip"]'
+    );
+    const tooltipList = [...tooltipTriggerList].map(
+        (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+    );
 
   (function(l) {
   if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};

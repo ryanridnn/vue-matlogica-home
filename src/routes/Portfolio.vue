@@ -10,12 +10,6 @@ const connection = useConnectionStore();
 
 const timeout = ref(null);
 
-const portfolio = computed(() => connection.dagNodes[0]);
-
-const trades = computed(() =>
-	portfolio.value ? portfolio.value.output_params.Trades : []
-);
-
 const handleUpdate = (e, key) => {
 	validateSubmit(e, () => {
 		updateParam(0, key, e.target.value);
@@ -32,7 +26,6 @@ const progressStyle = computed(() => ({
 const tableMaxHeight = ref(600);
 
 const onResize = (e) => {
-	// console.log(e.target.innerWidth);
 	throttle(() => {
 		if (e.target.innerWidth >= 992) {
 			tableMaxHeight.value = 500;
@@ -65,7 +58,10 @@ onUnmounted(() => {
 					type="number"
 					class="portfolio__field"
 					id="numTrades"
-					:value="portfolio && portfolio.input_params.NumTrades"
+					:value="
+						connection.portfolio &&
+						connection.portfolio.input_params.NumTrades
+					"
 					@keydown="(e) => handleUpdate(e, 'NumTrades')"
 				/>
 				<label for="valDate" class="portfolio__label"
@@ -75,7 +71,10 @@ onUnmounted(() => {
 					type="number"
 					class="portfolio__field"
 					id="valDate"
-					:value="portfolio && portfolio.input_params.ValDate"
+					:value="
+						connection.portfolio &&
+						connection.portfolio.input_params.ValDate
+					"
 					@keydown="(e) => handleUpdate(e, 'ValDate')"
 				/>
 			</div>
@@ -93,7 +92,7 @@ onUnmounted(() => {
 		<Table
 			class="table"
 			label="Trades"
-			:content="trades"
+			:content="connection.trades"
 			:maxHeight="tableMaxHeight"
 		/>
 	</div>
